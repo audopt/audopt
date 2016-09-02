@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :animals
   resources :comments
   resources :posts
   resources :reports
