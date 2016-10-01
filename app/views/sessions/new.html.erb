@@ -1,19 +1,35 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
-
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3" style="margin-top: 10%;">
     <%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+    <div class="input-field">
+      <%= f.email_field :email, class: 'validate', id: 'email' %>
+      <label for="email">Email</label>
+    </div>
 
+
+    <div class="input-field">
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
-    <div class="new-buttons", style="position: center; margin-left: 20%;">
-        <%= f.submit "Log in", class: "btn btn-primary" %>
-        <%= link_to "Cadastre-se!", new_user_path, class: "btn btn-primary" %>
     </div>
-  <% end %>
+
+    <div class="new-buttons", style="position: center; margin-left: 35%;">
+          <td><%= f.submit "Log in", class: "btn btn-primary" %></td>
+    </div>
+
+    <div class="col s12">
+      <div class="card yellow darken-3">
+        <div class="card-content white-text">
+          <span class="card-title">Não está cadastrado?</span>
+          <p>Venha para a maior comunidade de adoções de animais do Brasil! :)</p>
+        </div>
+        <div class="card-action">
+          <%= link_to "Cadastre-se!", new_user_path, style: 'color: white; margin-left: 35%;' %>
+        </div>
+      </div>
+    </div>
+
+    <% end %>
   </div>
 </div>
