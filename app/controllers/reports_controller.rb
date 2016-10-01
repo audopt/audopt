@@ -25,6 +25,8 @@ class ReportsController < ApplicationController
   # POST /reports.json
   def create
     @report = Report.new(report_params)
+    @report.sender = current_user.id
+    @report.user_id = params[:user_id]
 
     respond_to do |format|
       if @report.save

@@ -1,34 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="user-show">
+  <span class="user-image"><%= image_tag current_user.avatar.url(:thumb), class:'user-profile-image' %></span>
+  <div class="user-info">
+    <table id="user-attributes">
+      <tr><td>Nome:<%= @user.name%></td></tr>
+      <tr><td>E-mail:<%= @user.email%></td></tr>
+      <tr><td>Telefone:<%= @user.phone%></td></tr>
+    </table>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
-
-<p>
-  <strong>Birth:</strong>
-  <%= @user.birth %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+    <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-info", id: "edit-path" %>
+    <%= link_to 'Denunciar usuário', "#{@user.id}/new_report", class: "btn btn-info red darken-4", id: "edit-path" %>
+  </div>
+</div>
