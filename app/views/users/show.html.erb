@@ -7,7 +7,7 @@
       <tr><td>Telefone:<%= @user.phone%></td></tr>
     </table>
 
-    <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-info", id: "edit-path" %>
-    <%= link_to 'Denunciar usuário', "#{@user.id}/new_report", class: "btn btn-info red darken-4", id: "edit-path" %>
+    <%= link_to 'Denunciar usuário',
+    "#{@user.id}/report_user", class: "btn btn-info red darken-4", id: "edit-path" %>
   </div>
 </div>

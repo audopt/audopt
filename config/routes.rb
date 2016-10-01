@@ -64,7 +64,10 @@ Rails.application.routes.draw do
   resources :reports
   resources :users
 
-  get 'users/:id/new_report' => 'reports#new'
+  # get 'users/:id/new_report' => 'reports#new'
+
+  get '/users/:id/report_user' => 'users#report_user'
+  post '/reported' => 'users#reported'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

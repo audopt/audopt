@@ -61,6 +61,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def report_user
+    @report = Report.new
+  end
+
+  def reported
+    @report = Report.new
+    @report.reason = params[:reason]
+    @report.user_id = params[:user_id]
+    @report.sender = current_user.id
+
+    if @report.save
+      redirect_to user_path(User.find(@report.user_id))
+    else
+      redirect_to report_user_path
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
