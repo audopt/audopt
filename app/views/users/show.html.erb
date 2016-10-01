@@ -5,6 +5,9 @@
       <tr><td>Nome:<%= @user.name%></td></tr>
       <tr><td>E-mail:<%= @user.email%></td></tr>
       <tr><td>Telefone:<%= @user.phone%></td></tr>
+      <%if !(@user.interests.blank?) %>
+        <tr><td>Interressados:<%= @user.interests%></td></tr>
+      <%end%>
     </table>
 
     <%= link_to 'Denunciar usuário',

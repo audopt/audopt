@@ -60,7 +60,9 @@ Rails.application.routes.draw do
   resources :messages
   resources :animals
   resources :comments
-  resources :posts
+  resources :posts do
+    put :interest, on: :member
+  end
   resources :reports
   resources :users
 

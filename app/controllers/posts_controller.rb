@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :interest]
 
   # GET /posts
   # GET /posts.json
@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @interested = InterestPost.find_by(user: current_user, post: @post).present?
   end
 
   # GET /posts/new
@@ -60,6 +61,20 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def interest
+    type = params[:type]
+    if type == "interested"
+      current_user.interests << @post
+      redirect_to :back, notice: 'Marcado como interresado'
+    elsif type == "uninterested"
+      current_user.interests.delete(@post)
+      redirect_to :back, notice: 'Desmarcado como interresado'
+    else
+      redirect_to :back, notice: 'Nothing happended'
+    end
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
