@@ -10,9 +10,10 @@
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
-
+    <div class="new-buttons", style="position: center; margin-left: 20%;">
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+        <%= link_to "Cadastre-se!", new_user_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
   </div>
 </div>

@@ -10,7 +10,12 @@
       </ul>
     </div>
   <% end %>
+----------------------
+  <%= params[:id] %>
+  -------------------
+  <%= hidden_field_tag :user_id, params[:id] %>
 
+  <%= params[:user_id] %>
   <div class="field">
     <%= f.label :reason %><br>
     <%= f.text_area :reason %>
