@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<!-- <%= link_to new_post_path, class: "btn-floating btn-large waves-effect waves-light red" do %>
-  <i class="material-icons add"></i>
-  <% end %> -->
+<%= link_to new_post_path, class: "btn-floating btn-large waves-effect waves-light red", style: 'margin: 0 0 1% 1%;' do %>
+  <i class="material-icons">add</i>
+<% end %>
 
-  <%= link_to '<i class="material-icons">add</i>'.html_safe, new_post_path, class: 'btn-floating btn-large waves-effect waves-light red' %>
 <table>
 
   <tbody>
@@ -22,7 +21,3 @@
     </div>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
