@@ -45,7 +45,11 @@
     	<%= f.file_field :avatar %>
     </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div id="signup-button">
+    <%= f.submit "Criar conta", class: "btn waves-effect waves-light" do %>
+      <i class="material-icons right">send</i>
+    <% end %>
   </div>
+
 <% end %>
