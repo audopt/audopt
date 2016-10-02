@@ -1,5 +1,5 @@
 <div class="user-show">
-  <span class="user-image"><%= image_tag current_user.avatar.url(:thumb), class:'user-profile-image' %></span>
+  <span class="user-image"><%= image_tag @user.avatar.url(:thumb), class:'user-profile-image' %></span>
   <div class="user-info">
     <table id="user-attributes">
       <tr><td>Nome:<%= @user.name%></td></tr>

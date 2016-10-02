@@ -24,17 +24,23 @@
     <%= f.text_field :breed %>
   </div>
   <div class="field">
-    <%= f.label :vaccined %><br>
     <%= f.check_box :vaccined %>
+    <%= f.label :vaccined %><br>
   </div>
   <div class="field">
-    <%= f.label :castrated %><br>
     <%= f.check_box :castrated %>
+    <%= f.label :castrated %><br>
   </div>
   <div class="field">
     <%= f.label :sex %><br>
     <%= f.text_field :sex %>
   </div>
+
+  <div class="field">
+    <%= f.check_box :adopted %>
+    <%= f.label :adopted %>
+  </div>
+
   <div class="field">
     <%= f.label :size %><br>
     <%= f.text_field :size %>
@@ -42,4 +48,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
