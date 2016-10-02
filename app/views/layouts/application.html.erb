@@ -12,16 +12,16 @@
 <body>
 
   <nav>
-  <div class="nav-wrapper lime darken-3">
-    <a href="#" class="brand-logo">Audopt</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <% if logged_in? %>
-        <li><%= link_to "Publicações", posts_path %></li>
-        <li><%= link_to "Bem vindo, %s" % current_user.name, user_path(current_user)%></li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
+    <div class="nav-wrapper lime darken-3">
+      <a href="#" class="brand-logo">Audopt</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if logged_in? %>
+          <li><%= link_to "Publicações", posts_path %></li>
+          <li><%= link_to "Bem vindo, %s" % current_user.name, user_path(current_user)%></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
 
   <%= yield %>
 

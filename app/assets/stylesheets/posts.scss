@@ -1,3 +1,30 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post-profile-image {
+    height: 50%;
+}
+
+#publication-photo {
+  width: 15%;
+}
+
+.publication {
+  border-style: solid;
+  border-color: gainsboro;
+}
+
+.post-details {
+  margin-left: 40%;
+}
+
+#interested-btn {
+  width: 10%;
+  margin-left: 43%;
+}
+
+#uninterested-btn {
+  width: 10%;
+  margin-left: 43%;
+}

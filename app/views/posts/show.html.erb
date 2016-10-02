@@ -1,22 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @post.text %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @post.location %>
-</p>
+<table class="post-details">
+  <tr>
+    <td><%= image_tag(@post.avatar.url(:thumb), class:'post-show') %></td>
+  </tr>
+  <tr>
+    <td><%= @post.text %></td>
+  </tr>
+  <tr>
+    <td><%= @post.location %></td>
+  </tr>
+</table>
 
 <% if @interested %>
-	<%= link_to 'Desmarca como Interresado', interest_post_path(@post, type: "uninterested"), method: :put%>
+  <%= link_to 'Não me interesso mais', interest_post_path(@post, type: "uninterested", method: :put), class: 'btn', id: 'uninterested-btn' %>
 <% else %>
-	<%= link_to 'Marca como Interresado', interest_post_path(@post, type: "interested"), method: :put%>
+  <%= link_to 'Me interessei!', interest_post_path(@post, type: "interested", method: :put), class: 'btn', id: 'interested-btn' %>
 <% end %>
-
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>

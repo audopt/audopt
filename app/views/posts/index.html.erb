@@ -1,26 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
+<!-- <%= link_to new_post_path, class: "btn-floating btn-large waves-effect waves-light red" do %>
+  <i class="material-icons add"></i>
+  <% end %> -->
 
+  <%= link_to '<i class="material-icons">add</i>'.html_safe, new_post_path, class: 'btn-floating btn-large waves-effect waves-light red' %>
 <table>
-  <thead>
-    <tr>
-      <th>Text</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.text %></td>
-        <td><%= post.location %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+        <tr class="publication">
+          <td id="publication-photo"><%= link_to(image_tag(post.avatar.url(:thumb), class:'post-profile-image'), post_path(post)) %></td>
+          <td>
+            <table>
+              <tr><td><%= post.location %></td></tr>
+              <tr><td><%= post.text %></td></tr>
+            </table>
+          </td>
+        </tr>
+      <% end %>
+    </div>
   </tbody>
 </table>
 
