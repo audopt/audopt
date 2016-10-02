@@ -19,6 +19,46 @@
     <%= f.label :location %><br>
     <%= f.text_field :location %>
   </div>
+
+  <h5>Insira aqui as informações do animal</h5>
+
+  <%= f.fields_for :animal do |ff| %>
+    <div class="field">
+      <%= ff.label :name %>
+      <%= ff.text_field :name %>
+    </div>
+    <div class="field">
+      <%= ff.label :kind %><br>
+      <%= ff.text_field :kind %>
+    </div>
+    <div class="field">
+      <%= ff.label :breed %><br>
+      <%= ff.text_field :breed %>
+    </div>
+    <div class="field">
+      <%= ff.check_box :vaccined %>
+      <%= ff.label :vaccined %><br>
+    </div>
+    <div class="field">
+      <%= ff.check_box :castrated %>
+      <%= ff.label :castrated %><br>
+    </div>
+    <div class="field">
+      <%= ff.label :sex %><br>
+      <%= ff.text_field :sex %>
+    </div>
+
+    <div class="field">
+      <%= ff.check_box :adopted %>
+      <%= ff.label :adopted %>
+    </div>
+
+    <div class="field">
+      <%= ff.label :size %><br>
+      <%= ff.text_field :size %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

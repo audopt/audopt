@@ -2,13 +2,47 @@
 
 <table class="post-details">
   <tr>
-    <td><%= image_tag(@post.avatar.url(:thumb), class:'post-show') %></td>
+    <td>
+      <h5>Informações</h5>
+    </td>
   </tr>
+
   <tr>
     <td><%= @post.text %></td>
   </tr>
   <tr>
-    <td><%= @post.location %></td>
+    <td>Localização: <%= @post.location %></td>
+  </tr>
+
+  <tr>
+    <td>
+      <h5>Dados do animal</h5>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Nome: <%= @post.animal.name %></td>
+  </tr>
+  <tr>
+    <td>Tipo: <%= @post.animal.kind %></td>
+  </tr>
+  <tr>
+    <td>Raça: <%= @post.animal.breed %></td>
+  </tr>
+  <tr>
+    <td>Vacinado? <%= @post.animal.vaccined ? "Sim" : "Não" %></td>
+  </tr>
+  <tr>
+    <td>Castrado? <%= @post.animal.castrated ? "Sim" : "Não" %></td>
+  </tr>
+  <tr>
+    <td>Sexo: <%= @post.animal.sex == "M" ? "Macho" : "Fêmea" %></td>
+  </tr>
+  <tr>
+    <td>Tamanho: <%= @post.animal.size %></td>
+  </tr>
+  <tr>
+    <td>Já foi adotado? <%= @post.animal.adopted ? "Sim" : "Não" %></td>
   </tr>
 </table>
 

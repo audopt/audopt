@@ -9,7 +9,7 @@
   <tbody>
     <% @posts.each do |post| %>
         <tr class="publication">
-          <td id="publication-photo"><%= link_to(image_tag(post.avatar.url(:thumb), class:'post-profile-image'), post_path(post)) %></td>
+          <td id="publication-photo"><%= link_to(image_tag(post.animal.avatar.url(:thumb), class:'post-profile-image'), post_path(post)) %></td>
           <td>
             <table>
               <tr><td><%= post.location %></td></tr>
