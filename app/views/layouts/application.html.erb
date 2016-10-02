@@ -13,11 +13,15 @@
 
   <nav>
     <div class="nav-wrapper lime darken-3">
-      <a href="#" class="brand-logo">Audopt</a>
+      <%= link_to "Audopt", root_path, class: "brand-logo" %>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if logged_in? %>
           <li><%= link_to "Publicações", posts_path %></li>
           <li><%= link_to "Bem vindo, %s" % current_user.name, user_path(current_user)%></li>
+          <li><%= link_to "Sair", logout_path %>
+        <% else %>
+          <li><%= link_to "Cadastre-se", new_user_path %></li>
+          <li><%= link_to "Entrar", login_path %></li>
         <% end %>
       </ul>
     </div>
