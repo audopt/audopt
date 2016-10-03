@@ -66,6 +66,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def report_list
+    @user = User.find(params[:id])
+    @reports = @user.reports
+  end
+
   private
     def set_user
       @user = User.find(params[:id])

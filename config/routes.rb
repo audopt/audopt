@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  
+
   resources :messages
   resources :animals
   resources :comments
@@ -68,7 +68,8 @@ Rails.application.routes.draw do
 
   # get 'users/:id/new_report' => 'reports#new'
 
-  get '/users/:id/report_user' => 'users#report_user'
+  get '/users/:id/report_user' => 'users#report_user', as: :report_user
+  get '/users/:id/report_list' => 'users#report_list', as: :reports_list
   post '/reported' => 'users#reported'
 
   get '/login' => 'sessions#new'

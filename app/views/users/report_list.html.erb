@@ -1,0 +1,18 @@
+<div id="users-report">
+  <table class="report">
+    <tbody>
+      <% @reports.each do |report| %>
+        <% user = User.find(report.sender) %>
+          <tr class="report">
+              <td id="report-sender"><%= link_to(image_tag(user.avatar.url(:thumb), class:'reporter-image'), user_path(user)) %></td>
+            <td>
+              <table>
+                <tr><td><%= "#{User.find(report.sender).name} disse:" %></td></tr>
+                <tr><td><%= report.reason %></td></tr>
+              </table>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
