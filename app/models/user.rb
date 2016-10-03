@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 	has_many :reports
 	has_many :interest_posts
 	has_many :interests, through: :interest_posts, source: :post
+  has_many :posts
 
 	EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
