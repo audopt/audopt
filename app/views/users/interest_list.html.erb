@@ -1,0 +1,17 @@
+<div id="users-interested">
+  <table class="interest">
+    <tbody>
+      <% @interested_posts.each do |post| %>
+          <tr class="post">
+              <td id="animal-photo"><%= link_to(image_tag(post.animal.avatar.url(:thumb), class:'animal-image'), post_path(post)) %></td>
+            <td>
+              <table>
+                <tr><td><%= post.text %></td></tr>
+                <tr><td><%= post.location %></td></tr>
+              </table>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

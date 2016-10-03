@@ -68,6 +68,7 @@ Rails.application.routes.draw do
 
   # get 'users/:id/new_report' => 'reports#new'
 
+  get 'users/:id/interest_list' => 'users#interest_list', as: :user_interested_post
   get '/users/:id/report_user' => 'users#report_user', as: :report_user
   get '/users/:id/report_list' => 'users#report_list', as: :reports_list
   post '/reported' => 'users#reported'

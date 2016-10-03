@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-	has_many :reports
+	has_many :reports, dependent: :destroy
 	has_many :interest_posts
 	has_many :interests, through: :interest_posts, source: :post
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
 	EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

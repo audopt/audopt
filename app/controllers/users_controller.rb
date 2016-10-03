@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :report_list, :interest_list]
 
   def index
     @users = User.all
@@ -68,8 +68,11 @@ class UsersController < ApplicationController
   end
 
   def report_list
-    @user = User.find(params[:id])
     @reports = @user.reports
+  end
+
+  def interest_list
+    @interested_posts = @user.interests
   end
 
   private

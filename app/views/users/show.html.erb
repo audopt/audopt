@@ -5,12 +5,11 @@
       <tr><td>Nome:<%= @user.name%></td></tr>
       <tr><td>E-mail:<%= @user.email%></td></tr>
       <tr><td>Telefone:<%= @user.phone%></td></tr>
-      <% unless @user.interests.blank? %>
-        <tr><td>Interressados:<%= @user.interests%></td></tr>
-      <%end%>
     </table>
 
     <%= link_to 'Denunciar usuário', "#{@user.id}/report_user", class: "btn btn-info red darken-4", id: "edit-path" unless @user == current_user %>
-    <%= link_to 'Denúncias', reports_list_url(@user), class:'btn btn-primary' %>
+    <%= link_to 'Denúncias', reports_list_url(@user), class:'btn btn-primary' if current_user.role_admin? %>
+    <%= link_to 'Posts interessados', user_interested_post_url(@user), class:'btn btn-primary' %>
+
   </div>
 </div>
