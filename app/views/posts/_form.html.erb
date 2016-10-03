@@ -13,11 +13,11 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :Descrição %><br>
+      <%= f.label :text %><br>
       <%= f.text_field :text %>
     </div>
     <div class="field">
-      <%= f.label :Localização %><br>
+      <%= f.label :location %><br>
       <%= f.text_field :location %>
     </div>
 
@@ -25,42 +25,42 @@
 
     <%= f.fields_for :animal do |ff| %>
       <div class="field">
-        <%= ff.label :Nome %>
+        <%= ff.label :name %>
         <%= ff.text_field :name %>
       </div>
       <div class="field">
-        <%= ff.label :Tipo %><br>
+        <%= ff.label :kind %><br>
         <%= ff.text_field :kind %>
       </div>
       <div class="field">
-        <%= ff.label :Raça %><br>
+        <%= ff.label :breed %><br>
         <%= ff.text_field :breed %>
       </div>
       <div class="field">
         <%= ff.check_box :vaccined %>
-        <%= ff.label :Vacinado %><br>
+        <%= ff.label :vaccined %><br>
       </div>
       <div class="field">
         <%= ff.check_box :castrated %>
-        <%= ff.label :Castrado %><br>
+        <%= ff.label :castrated %><br>
       </div>
       <div class="field">
-        <%= ff.label :Sexo %><br>
+        <%= ff.label :sex %><br>
         <%= ff.text_field :sex %>
       </div>
 
       <div class="field">
         <%= ff.check_box :adopted %>
-        <%= ff.label :Adotado %>
+        <%= ff.label :adopted %>
       </div>
 
       <div class="field">
-        <%= ff.label :Tamanho %><br>
+        <%= ff.label :size %><br>
         <%= ff.text_field :size %>
       </div>
 
       <div class="form-group">
-        <%= ff.label :Foto, class: 'col-sm-2 control-label'  %>
+        <%= ff.label :avatar, class: 'col-sm-2 control-label'  %>
         <div class="col-sm-6">
           <%= ff.file_field :avatar %>
         </div>

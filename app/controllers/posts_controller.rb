@@ -63,7 +63,7 @@ class PostsController < ApplicationController
       redirect_to :back, notice: 'Nothing happended'
     end
   end
-  
+
 
   private
     def set_post
@@ -71,6 +71,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:text, :location, animal_attributes: [:name, :kind, :breed, :vaccined, :castrated, :sex, :adopted, :size])
+      params.require(:post).permit(:text, :location, animal_attributes: [:name, :kind, :breed, :vaccined, :castrated, :sex, :adopted, :size, :avatar])
     end
 end
