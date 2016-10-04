@@ -1,10 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<span class="post-image"><%= image_tag @post.animal.avatar.url(:thumb), class:'animal-image' %></span>
+
 <table class="post-details">
   <tr>
     <td>
       <h5>Informações</h5>
     </td>
+  </tr>
+
+  <tr>
+    <td>Criador: <%= link_to @user.name, user_path(@user.id) %></td>
   </tr>
 
   <tr>

@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @interested = InterestPost.find_by(user: current_user, post: @post).present?
+    @user = User.find(@post.user_id)
   end
 
   def new
