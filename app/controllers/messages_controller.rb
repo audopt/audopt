@@ -15,6 +15,7 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
+    @all_users = User.all
   end
 
   # GET /messages/1/edit
@@ -68,7 +69,7 @@ class MessagesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def message_params
-      params.require(:message).permit(:text)
+    def message_params  
+      params.require(:message).permit(:text,:receiver_id,:sender_id)
     end
 end
