@@ -75,6 +75,21 @@ class UsersController < ApplicationController
     @interested_posts = @user.interests
   end
 
+  def new_post
+    @post = current_user.posts.new
+    @post.build_animal
+  end
+
+  def create_post
+    @post = current_user.posts.new(user_post_params)
+
+    if @post.save
+      redirect_to @post
+    else
+      redirect_to new_user_post_url(@post)
+    end
+  end
+
   private
     def set_user
       @user = User.find(params[:id])
@@ -82,5 +97,9 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :address, :phone, :birth, :password_confirmation, :avatar)
+    end
+
+    def user_post_params
+      params.require(:post).permit(:text, :location, animal_attributes: [:name, :kind, :breed, :vaccined, :castrated, :sex, :adopted, :size, :avatar])
     end
 end

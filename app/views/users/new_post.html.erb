@@ -1,0 +1,74 @@
+<div id="post-new">
+  <%= form_for @post, url: { controller: 'users', action: 'create_post' }, method: :post do |f| %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :text %><br>
+      <%= f.text_field :text %>
+    </div>
+    <div class="field">
+      <%= f.label :location %><br>
+      <%= f.text_field :location %>
+    </div>
+
+    <h5>Insira aqui as informações do animal</h5>
+
+    <%= f.fields_for :animal do |ff| %>
+      <div class="field">
+        <%= ff.label :name %>
+        <%= ff.text_field :name %>
+      </div>
+      <div class="field">
+        <%= ff.label :kind %><br>
+        <%= ff.text_field :kind %>
+      </div>
+      <div class="field">
+        <%= ff.label :breed %><br>
+        <%= ff.text_field :breed %>
+      </div>
+      <div class="field">
+        <%= ff.check_box :vaccined %>
+        <%= ff.label :vaccined %><br>
+      </div>
+      <div class="field">
+        <%= ff.check_box :castrated %>
+        <%= ff.label :castrated %><br>
+      </div>
+      <div class="field">
+        <%= ff.label :sex %><br>
+        <%= ff.text_field :sex %>
+      </div>
+
+      <div class="field">
+        <%= ff.check_box :adopted %>
+        <%= ff.label :adopted %>
+      </div>
+
+      <div class="field">
+        <%= ff.label :size %><br>
+        <%= ff.text_field :size %>
+      </div>
+
+      <div class="form-group">
+        <%= ff.label :avatar, class: 'col-sm-2 control-label'  %>
+        <div class="col-sm-6">
+          <%= ff.file_field :avatar %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Criar Publicação", id: 'submit-button', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
