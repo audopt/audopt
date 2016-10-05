@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    @user = current_user
     @messages = Message.where(receiver_id: @user.id).order(created_at: :desc)
   end
 
@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
   def new
     @user = current_user
     @message = Message.new
-    @messages.update(sender_id: @user.id)
+    @message.update(sender_id: @user.id)
     @all_users = User.all
   end
 
