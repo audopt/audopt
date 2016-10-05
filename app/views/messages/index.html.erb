@@ -1,26 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Messages</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Text</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @messages.each do |message| %>
-      <tr>
-        <td><%= message.text %></td>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<h1>Lista de Mensagens Recebidas</h1>
+      <% @messages.each do |message| %>
+      <div id="message">  
+        <% user = User.find(message.sender_id)%>
+        <p><b>Sended <%= time_ago_in_words(message.created_at) %> ago by <%=user.name%> </b></p>
+        <p><%= message.text %></p>
+        <%= link_to 'Apagar', message, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
 <br>
 
