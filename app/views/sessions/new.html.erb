@@ -1,22 +1,29 @@
 <% provide(:title, "Log in") %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3" id="form-login">
-    <%= form_for(:session, url: login_path) do |f| %>
+    <div class="col s12" id="signup-box">
 
-    <div class="input-field">
-      <%= f.label "Email" %>
-      <%= f.email_field :email, class: 'validate', id: 'email' %>
+      <div class="card  darken-3">
+        <div class="card-content white-text" id='form-login'>
+          <%= form_for(:session, url: login_path) do |f| %>
+            <div class="input-field">
+              <%= f.label "Email" %>
+              <%= f.email_field :email, class: 'validate', id: 'email' %>
+            </div>
+
+            <div class="input-field">
+              <%= f.label "Senha" %>
+              <%= f.password_field :password, class: 'form-control' %>
+            </div>
+
+            <div class="new-buttons">
+              <td><%= f.submit "Entrar", class: "btn btn-primary" %></td>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
 
-
-    <div class="input-field">
-      <%= f.label "Senha" %>
-      <%= f.password_field :password, class: 'form-control' %>
-    </div>
-
-    <div class="new-buttons", style="position: center; margin-left: 35%;">
-          <td><%= f.submit "Entrar", class: "btn btn-primary" %></td>
-    </div>
 
     <div class="col s12" id="signup-box">
       <div class="card darken-3">
@@ -25,11 +32,10 @@
           <p>Venha para a maior comunidade de adoções de animais do Brasil! :)</p>
         </div>
         <div class="card-action">
-          <%= link_to "Cadastre-se!", new_user_path, style: 'color: white; margin-left: 35%;' %>
+          <%= link_to "Cadastre-se!", new_user_path, id: "signup-box-button" %>
         </div>
       </div>
     </div>
 
-    <% end %>
   </div>
 </div>

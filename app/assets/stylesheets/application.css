@@ -15,14 +15,14 @@
  */
 
 body {
-  background-image: url('images/background.png');
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+    background-image: url('images/background.png');
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 main {
-  flex: 1 0 auto;
+    flex: 1 0 auto;
 }
 
 nav {
@@ -32,6 +32,9 @@ nav {
 
 .whole-content {
     margin-top: 80px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 .hidden {
@@ -46,10 +49,10 @@ nav {
   background-color: #e8c351 !important;
 }
 
-#nav-mobile > li:nth-child(2) {
-    width: 80px;
-}
-
 .btn-primary {
     background-color: #55abc2 !important;
+}
+
+#posts-header-btn {
+    width: 105px !important;
 }
