@@ -14,16 +14,20 @@
 <table>
   <tbody>
     <% @posts.each do |post| %>
-        <tr class="publication">
-          <td id="publication-photo"><%= link_to(image_tag(post.animal.avatar.url(:thumb), class:'post-profile-image'), post_path(post)) %></td>
-          <td>
-            <table>
-              <tr><td><%= post.location %></td></tr>
-              <tr><td><%= post.text %></td></tr>
-              <tr><td><%= post.created_at %></td></tr>
-            </table>
-          </td>
-        </tr>
+
+        <div class="card" id="post-content">
+          <div class="card-content white-text row" id='form-login'>
+            <div class="col s3">
+              <%= link_to(image_tag(post.animal.avatar.url(:thumb), class:'post-profile-image'), post_path(post)) %>
+            </div>
+            <div class="col s9" id="post-info">
+              <p><%= post.location %></p>
+              <p><%= post.text %></p>
+              <p><%= post.created_at %></p>
+            </div>
+          </div>
+        </div>
+
       <% end %>
     </div>
   </tbody>

@@ -15,6 +15,6 @@ animal1 = Animal.create(name: "Marley", kind: "Cachorro", breed: "Poodle", vacci
 animal2= Animal.create(name: "Xodó", kind: "Papagaio", breed: "Papagaio Brasileiro", vaccined: false, castrated: false, sex: 'M', size: "Small", adopted: false)
 animal3 = Animal.create(name: "Bob", kind: "Coelho", breed: "Chinchila padrão", vaccined: false, castrated: false, sex: 'M', size: "Medium", adopted: false)
 
-post1 = Post.create(text: "Adote esse aqui!", location: "Taguatinga", user_id: user1, animal: animal1)
-post2 = Post.create(text: "Adote este!", location: "Valparaíso", user_id: user2, animal: animal2)
-post3 = Post.create(text: "Adote esse aqui!", location: "Taguatinga", user_id: user3, animal: animal3)
+post1 = Post.create(text: "Adote esse aqui!", location: "Taguatinga", user: user1, animal: animal1)
+post2 = Post.create(text: "Adote este!", location: "Valparaíso", user: user2, animal: animal2)
+post3 = Post.create(text: "Adote esse aqui!", location: "Taguatinga", user: user3, animal: animal3)

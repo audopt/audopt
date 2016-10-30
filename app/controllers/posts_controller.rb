@@ -8,6 +8,8 @@ class PostsController < ApplicationController
 
   def show
     @interested = InterestPost.find_by(user: current_user, post: @post).present?
+    @post = Post.find(params[:id])
+    puts @post.inspect
     @user = User.find(@post.user_id)
   end
 
