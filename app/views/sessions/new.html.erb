@@ -1,25 +1,25 @@
 <% provide(:title, "Log in") %>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3" style="margin-top: 10%;">
+  <div class="col-md-6 col-md-offset-3" id="form-login">
     <%= form_for(:session, url: login_path) do |f| %>
 
     <div class="input-field">
+      <%= f.label "Email" %>
       <%= f.email_field :email, class: 'validate', id: 'email' %>
-      <label for="email">Email</label>
     </div>
 
 
     <div class="input-field">
-      <%= f.label :password %>
+      <%= f.label "Senha" %>
       <%= f.password_field :password, class: 'form-control' %>
     </div>
 
     <div class="new-buttons", style="position: center; margin-left: 35%;">
-          <td><%= f.submit "Log in", class: "btn btn-primary" %></td>
+          <td><%= f.submit "Entrar", class: "btn btn-primary" %></td>
     </div>
 
-    <div class="col s12">
-      <div class="card yellow darken-3">
+    <div class="col s12" id="signup-box">
+      <div class="card darken-3">
         <div class="card-content white-text">
           <span class="card-title">Não está cadastrado?</span>
           <p>Venha para a maior comunidade de adoções de animais do Brasil! :)</p>

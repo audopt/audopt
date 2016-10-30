@@ -9,16 +9,18 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
+
 </head>
 
-<body>
-
+<body style="background-image: url('images/background.png');">
   <nav>
-    <div class="nav-wrapper lime darken-3">
-      <%= link_to "Audopt", root_path, class: "brand-logo" %>
+    <div class="nav-wrapper lime darken-3" id="header">
+      <span class="logo">
+        <%= link_to "Audopt", root_path, class: "brand-logo" %>
+      </span>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if logged_in? %>
-          <li><%= link_to "Messagens", messages_path %></li>
+          <li><%= link_to "Mensagens", messages_path %></li>
           <li><%= link_to "Publicações", posts_path %></li>
           <li><%= link_to "Bem vindo, %s" % current_user.name, user_path(current_user)%></li>
           <li><%= link_to "Sair", logout_path %>
@@ -30,7 +32,9 @@
     </div>
   </nav>
 
-  <%= yield %>
+  <div class="whole-content">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

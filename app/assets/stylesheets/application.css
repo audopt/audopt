@@ -15,6 +15,7 @@
  */
 
 body {
+  background-image: url('images/background.png');
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -24,18 +25,31 @@ main {
   flex: 1 0 auto;
 }
 
+nav {
+    position: fixed;
+    z-index: 2000;
+}
+
+.whole-content {
+    margin-top: 80px;
+}
+
 .hidden {
     display: none;
 }
 
-.order-content {
-    float: right;
+.logo {
+    margin-left: 20px;
 }
 
-.order-content > h6 {
-    text-align: center;
+#header {
+  background-color: #e8c351 !important;
 }
 
-.posts-header {
-    margin-bottom: 20px;
+#nav-mobile > li:nth-child(2) {
+    width: 80px;
+}
+
+.btn-primary {
+    background-color: #55abc2 !important;
 }
