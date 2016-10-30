@@ -14,6 +14,19 @@
  *= require_self
  */
 
+
+ .row .col.s2 {
+     width: 20.666667%;
+     margin-left: 65%;
+     left: auto;
+     right: auto;
+ }
+
+ #post-content-box > div.col.s3 > a > img {
+   width: 100%
+ }
+
+
 body {
     background-image: url('images/background.png');
     display: flex;
