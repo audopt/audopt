@@ -1,12 +1,16 @@
 <p id="notice"><%= notice %></p>
+<div class="posts-header">
 
 <%= link_to new_user_post_url, class: "btn-floating btn-large waves-effect waves-light red", style: 'margin: 0 0 1% 1%;' do %>
   <i class="material-icons">add</i>
 <% end %>
 
-<h4>Ordenar por</h4>
-<%= link_to "Data", posts_path(order: "date") %>
-<%= link_to "Nada", posts_path %>
+  <span class="order-content">
+    <h6>Ordenar</h6>
+    <%= link_to "Data (mais recente primeiro)", posts_path(order: "date_desc") %><br>
+    <%= link_to "Data (mais antiga primeiro)", posts_path(order: "date_asc") %>
+  </span>
+</div>
 
 <table>
   <tbody>
@@ -17,6 +21,7 @@
             <table>
               <tr><td><%= post.location %></td></tr>
               <tr><td><%= post.text %></td></tr>
+              <tr><td><%= post.created_at %></td></tr>
             </table>
           </td>
         </tr>

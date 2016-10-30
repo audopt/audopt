@@ -77,10 +77,12 @@ class PostsController < ApplicationController
 
     def reorder
       case params[:order]
-      when "date"
+      when "date_desc"
         posts = SortByDateDesc.new
+        posts.sort_posts
+      when "date_asc"
+        posts = SortByDateAsc.new
         posts.sort_posts        
-      # when "author"
       else
         Post.all
       end

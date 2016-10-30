@@ -23,3 +23,19 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+.hidden {
+    display: none;
+}
+
+.order-content {
+    float: right;
+}
+
+.order-content > h6 {
+    text-align: center;
+}
+
+.posts-header {
+    margin-bottom: 20px;
+}
