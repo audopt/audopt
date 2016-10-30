@@ -1,8 +1,8 @@
 <div id="post-new">
-  <%= form_for @post, url: { controller: 'users', action: 'create_post' }, method: :post do |f| %>
+  <%= form_for(@post) do |f| %>
     <% if @post.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <h5><%= pluralize(@post.errors.count, "erro", "erros") %> ocorreram:</h5>
 
         <ul>
         <% @post.errors.full_messages.each do |message| %>
@@ -12,55 +12,52 @@
       </div>
     <% end %>
 
+    <h5 style="text-align: center; margin-top: 20px;">Crie aqui sua publicação</h5>
+
     <div class="field">
-      <%= f.label :text %><br>
+      <%= f.label "Texto" %><br>
       <%= f.text_field :text %>
     </div>
     <div class="field">
-      <%= f.label :location %><br>
+      <%= f.label "Localização" %><br>
       <%= f.text_field :location %>
     </div>
 
-    <h5>Insira aqui as informações do animal</h5>
+    <h5 style="text-align: center; margin-top: 20px;">Insira aqui as informações do animal</h5>
 
     <%= f.fields_for :animal do |ff| %>
       <div class="field">
-        <%= ff.label :name %>
+        <%= ff.label "Nome" %>
         <%= ff.text_field :name %>
       </div>
       <div class="field">
-        <%= ff.label :kind %><br>
+        <%= ff.label "Tipo" %><br>
         <%= ff.text_field :kind %>
       </div>
       <div class="field">
-        <%= ff.label :breed %><br>
+        <%= ff.label "Raça" %><br>
         <%= ff.text_field :breed %>
       </div>
       <div class="field">
         <%= ff.check_box :vaccined %>
-        <%= ff.label :vaccined %><br>
+        <%= ff.label :vaccined, "Vacinado" %><br>
       </div>
       <div class="field">
         <%= ff.check_box :castrated %>
-        <%= ff.label :castrated %><br>
+        <%= ff.label :castrated, "Castrado" %><br>
       </div>
       <div class="field">
-        <%= ff.label :sex %><br>
-        <%= ff.text_field :sex %>
-      </div>
-
-      <div class="field">
-        <%= ff.check_box :adopted %>
-        <%= ff.label :adopted %>
+        <%= ff.label "Sexo" %><br>
+        <%= ff.select(:sex, ['M', 'F']) %>
       </div>
 
       <div class="field">
-        <%= ff.label :size %><br>
-        <%= ff.text_field :size %>
+        <%= ff.label "Selecione o tamanho" %>
+        <%= ff.select(:size, ["Pequeno", "Médio", "Grande"]) %>
       </div>
 
       <div class="form-group">
-        <%= ff.label :avatar, class: 'col-sm-2 control-label'  %>
+        <%= ff.label "Foto do animal", class: 'col-sm-2 control-label'  %>
         <div class="col-sm-6">
           <%= ff.file_field :avatar %>
         </div>
@@ -68,7 +65,7 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Criar Publicação", id: 'submit-button', class: 'btn btn-primary' %>
+      <%= f.submit "Criar publicação", class: 'btn btn-primary', style: 'margin-left: 38%; margin-top: 30px; margin-bottom: 100px;' %>
     </div>
   <% end %>
 </div>

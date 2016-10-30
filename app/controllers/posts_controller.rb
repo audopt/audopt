@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :interest]
 
   def index
-    # @posts = Post.all
     @posts = reorder
   end
 
@@ -23,13 +22,14 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: 'Publicação criada com sucesso' }
         format.json { render :show, status: :created, location: @post }
       else
-        format.html { render :new }
+        format.html { render 'users/new_post' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: 'Publicação atualizada com sucesso' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url, notice: 'Publicação deletada com sucesso' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +64,7 @@ class PostsController < ApplicationController
       current_user.interests.delete(@post)
       redirect_to :back, notice: 'Desmarcado como interresado'
     else
-      redirect_to :back, notice: 'Nothing happended'
+      redirect_to :back, notice: 'Nada aconteceu'
     end
   end
 
