@@ -15,27 +15,44 @@
  */
 
 body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+    background-image: url('images/background.png');
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 main {
-  flex: 1 0 auto;
+    flex: 1 0 auto;
+}
+
+nav {
+    position: fixed;
+    z-index: 2000;
+}
+
+.whole-content {
+    margin-top: 80px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 .hidden {
     display: none;
 }
 
-.order-content {
-    float: right;
+.logo {
+    margin-left: 20px;
 }
 
-.order-content > h6 {
-    text-align: center;
+#header {
+  background-color: #e8c351 !important;
 }
 
-.posts-header {
-    margin-bottom: 20px;
+.btn-primary {
+    background-color: #55abc2 !important;
+}
+
+#posts-header-btn {
+    width: 105px !important;
 }

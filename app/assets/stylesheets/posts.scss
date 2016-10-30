@@ -39,3 +39,47 @@
   margin-left: 40%;
   text-overflow: break-line;
 }
+
+.order-content {
+    float: right;
+}
+
+.order-content > h6 {
+    text-align: center;
+}
+
+.posts-header {
+    margin-bottom: 20px;
+}
+
+#post-content {
+  background-color: #EBDABC !important;
+  width: 96%;
+  margin-left: 2%;
+}
+
+#post-info > p {
+  color: black;
+}
+
+#post-info > h3 {
+  color: black;
+}
+
+#post-content-box {
+  margin-top: 10px;
+}
+
+.post-plus-content {
+  width: 96%;
+  margin-left: 2%;
+}
+
+#order-posts {
+  height: 80px;
+
+  h6 {
+    text-align: center;
+    font-weight: bold;
+  }
+}
