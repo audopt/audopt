@@ -46,7 +46,7 @@ nav {
 .whole-content {
     width: 80%;
     background: white !important;
-    margin: 5% auto 0 auto;
+    margin: 90px auto 0 auto;
     display: flex;
     min-height: 100vh;
     flex-direction: column;

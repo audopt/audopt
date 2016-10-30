@@ -11,10 +11,18 @@
 
   <nav>
     <div class="nav-wrapper lime darken-3" id="header">
-      <span class="logo">
-        <%= link_to image_tag('logo.png', class: 'image-logo'), root_path %>
-        <%= link_to "Audopt", root_path, class: "brand-logo" %>
-      </span>
+      <% if  !logged_in? %>
+        <span class="logo">
+          <%= link_to image_tag('logo.png', class: 'image-logo'), root_path %>
+          <%= link_to "Audopt", root_path, class: "brand-logo" %>
+        </span>
+      <% else %>
+        <span class="logo">
+          <%= link_to image_tag('logo.png', class: 'image-logo'), posts_path %>
+          <%= link_to "Audopt", posts_path, class: "brand-logo" %>
+        </span>
+      <% end %>
+
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if logged_in? %>
         <li><%= link_to "Notícias", articles_path %></li>

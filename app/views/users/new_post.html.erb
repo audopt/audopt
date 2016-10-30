@@ -12,7 +12,13 @@
       </div>
     <% end %>
 
-    <h5 style="text-align: center; margin-top: 20px;">Crie aqui sua publicação</h5>
+    <div class="col s12" id="" style="text-align: center; margin-top: 30px; width=100% !important;"">
+      <div class="card yellow darken-3">
+        <div class="card-content white-text">
+          <span class="card-title">Crie aqui sua publicação</span>
+        </div>
+      </div>
+    </div>
 
     <div class="field">
       <%= f.label "Texto" %><br>
@@ -23,7 +29,13 @@
       <%= f.text_field :location %>
     </div>
 
-    <h5 style="text-align: center; margin-top: 20px;">Insira aqui as informações do animal</h5>
+    <div class="col s12" id="" style="text-align: center; width=100% !important;">
+      <div class="card yellow darken-3">
+        <div class="card-content white-text">
+          <span class="card-title">Insira aqui as informações do animal</span>
+        </div>
+      </div>
+    </div>
 
     <%= f.fields_for :animal do |ff| %>
       <div class="field">
@@ -65,7 +77,7 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Criar publicação", class: 'btn btn-primary', style: 'margin-left: 38%; margin-top: 30px; margin-bottom: 100px;' %>
+      <%= f.submit "Criar publicação", class: 'btn', style: 'margin-left: 38%; margin-top: 30px; margin-bottom: 100px;' %>
     </div>
   <% end %>
 </div>
