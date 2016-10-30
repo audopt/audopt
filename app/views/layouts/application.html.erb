@@ -18,6 +18,7 @@
       <%= link_to "Audopt", root_path, class: "brand-logo" %>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if logged_in? %>
+          <li><%= link_to "Notícias", articles_path %></li>
           <li><%= link_to "Messagens", messages_path %></li>
           <li><%= link_to "Publicações", posts_path %></li>
           <li><%= link_to "Bem vindo, %s" % current_user.name, user_path(current_user)%></li>

@@ -1,3 +1,3 @@
 class Memento < ActiveRecord::Base
-	belongs_to :new
+	belongs_to :article
 end

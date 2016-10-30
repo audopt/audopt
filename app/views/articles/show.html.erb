@@ -1,0 +1,9 @@
+<h1><%= @article.title %></h1>
+
+<div class="article-info">
+  <%= "Escrito por #{User.find(@article.user_id).name} em #{@article.created_at.strftime("%d %b. %Y")}" %>
+</div>
+
+<div class="content">
+  <%= @article.content %>
+</div>

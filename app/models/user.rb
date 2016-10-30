@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :news
+	has_many :articles
 	has_many :reports, dependent: :destroy
 	has_many :interest_posts
 	has_many :interests, through: :interest_posts, source: :post

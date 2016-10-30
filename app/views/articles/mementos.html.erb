@@ -1,0 +1,15 @@
+<h1> Mementos </h1>
+
+<% if @mementos.empty? %>
+  <%= "Ainda não há mementos para essa notícia!" %>
+<% else %>
+  <% @mementos.each do |memento| %>
+    <table>
+      <tr>
+        <td><%= memento.title %></td>
+        <td><%= memento.created_at.strftime("%d %b. %Y") %></td>
+        <td><%= link_to "Restaurar essa versão", recover_url(memento), method: :post %></td>
+      <tr>
+    </table>
+  <% end %>
+<% end %>

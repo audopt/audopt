@@ -90,6 +90,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def my_articles
+    @articles = User.find(params[:id]).articles
+  end
+
   private
     def set_user
       @user = User.find(params[:id])
