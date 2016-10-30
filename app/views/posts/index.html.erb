@@ -7,11 +7,13 @@
 
   <div class="col s9"></div>
 
+  <% unless @posts.empty? %>
   <div class="col s2 card" id="order-posts">
     <h6>Ordenar</h6>
     <%= link_to "Data (mais recente primeiro)", posts_path(order: "date_desc") %><br>
     <%= link_to "Data (mais antiga primeiro)", posts_path(order: "date_asc") %>
   </div>
+  <% end %>
 </div>
 
 <table>

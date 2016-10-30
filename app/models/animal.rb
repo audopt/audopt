@@ -6,7 +6,7 @@ class Animal < ActiveRecord::Base
   validates :kind, presence: true, length: {maximum: 80}
   validates :breed, length: {maximum: 50}
   validates :sex, inclusion: { in: ['M', 'F'] }
-  validates :size, presence: true, length: {maximum: 20}
+  validates :size, presence: true, inclusion: { in: ["Pequeno", "Médio", "Grande"] } 
   validates :adopted, inclusion: { in: [true, false] }
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
