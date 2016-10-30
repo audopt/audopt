@@ -1,0 +1,5 @@
+<% @articles.each do |article| %>
+  <%= "#{article.title}" %>
+  <%= link_to "Editar", edit_article_path(article) %>
+  <%= link_to "Mementos", mementos_url(article) %>
+<% end %>
