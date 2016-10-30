@@ -3,19 +3,12 @@
 <% end %>
 
 <% @articles.each do |article| %>
-  <div class="article">
-    <table>
-      <div class="art-info">
-          <tr>
-            <td><%= link_to "#{article.title}", article_path(article)%></td>
-          </tr>
-          <tr>
-            <td><%= "Escrita por: #{User.find(article.user_id).name }"%></td>
-          </tr>
-          <tr>
-            <td><%= "#{article.description}}"%></td>
-          </tr>
+    <div class="col s12 m6">
+      <div class="card amber lighten-5">
+        <div class="card-content black-text">
+          <span class="card-title"><%= link_to "#{article.title}", article_path(article) %></span>
+          <p><%= article.description %></p>
+        </div>
       </div>
-    </table>
-  </div>
+    </div>
 <% end %>

@@ -9,10 +9,6 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-
-</head>
-
-<body style="background-image: url('/assets/background.png');">
   <nav>
     <div class="nav-wrapper lime darken-3" id="header">
       <span class="logo">
@@ -20,18 +16,22 @@
       </span>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if logged_in? %>
-          <li><%= link_to "Notícias", articles_path %></li>
-          <li><%= link_to "Mensagens", messages_path %></li>
-          <li><%= link_to "Publicações", posts_path %></li>
-          <li><%= link_to "Bem vindo, %s" % current_user.name, user_path(current_user)%></li>
-          <li><%= link_to "Sair", logout_path %>
-        <% else %>
+        <li><%= link_to "Notícias", articles_path %></li>
+        <li><%= link_to "Mensagens", messages_path %></li>
+        <li><%= link_to "Publicações", posts_path %></li>
+        <li><%= link_to "Bem vindo, %s" % current_user.name, user_path(current_user)%></li>
+        <li><%= link_to "Sair", logout_path %>
+          <% else %>
           <li><%= link_to "Cadastre-se", new_user_path %></li>
           <li><%= link_to "Entrar", login_path %></li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+</head>
+
+<body style="background-image: url('/assets/background.png');">
 
   <div class="whole-content">
     <%= yield %>
