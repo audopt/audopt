@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :interest]
 
   def index
-    @posts = Post.all
+    # @posts = Post.all
+    @posts = reorder
   end
 
   def show
@@ -72,5 +73,16 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:text, :location, animal_attributes: [:name, :kind, :breed, :vaccined, :castrated, :sex, :adopted, :size, :avatar])
+    end
+
+    def reorder
+      case params[:order]
+      when "date"
+        posts = SortByDateDesc.new
+        posts.sort_posts        
+      # when "author"
+      else
+        Post.all
+      end
     end
 end

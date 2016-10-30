@@ -4,6 +4,10 @@
   <i class="material-icons">add</i>
 <% end %>
 
+<h4>Ordenar por</h4>
+<%= link_to "Data", posts_path(order: "date") %>
+<%= link_to "Nada", posts_path %>
+
 <table>
   <tbody>
     <% @posts.each do |post| %>
