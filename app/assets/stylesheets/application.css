@@ -75,3 +75,13 @@ nav {
 .article-content {
   margin-top: 5%;
 }
+
+.image-logo {
+    height: 50px;
+    width: 50px;
+    margin: 5px 10px 0 0;
+}
+
+.blue-grey > div{
+    background-color: #4e782c !important;
+}
