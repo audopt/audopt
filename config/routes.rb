@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   end
   resources :reports
   resources :users
+  resources :articles
+  get '/articles/:id/mementos', to: 'articles#mementos', as: :mementos
+  post 'recover/:memento_id', to: 'articles#recover', as: :recover
+  get 'users/:id/my_articles', to: 'users#my_articles', as: :my_articles
 
   get 'users/:id/interest_list' => 'users#interest_list', as: :user_interested_post
   get '/users/:id/report_user' => 'users#report_user', as: :report_user
