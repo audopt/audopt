@@ -4,6 +4,6 @@
   <%= "Escrito por #{User.find(@article.user_id).name} em #{@article.created_at.strftime("%d %b. %Y")}" %>
 </div>
 
-<div class="content">
+<div class="article-content">
   <%= @article.content %>
 </div>

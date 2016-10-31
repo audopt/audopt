@@ -1,5 +1,9 @@
 <% @articles.each do |article| %>
-  <%= "#{article.title}" %>
-  <%= link_to "Editar", edit_article_path(article) %>
-  <%= link_to "Mementos", mementos_url(article) %>
+<table>
+  <tr>
+    <td style="width: 60%;"><%= "#{article.title}" %></td>
+    <td><%= link_to "Editar", edit_article_path(article) %></td>
+    <td><%= link_to "Mementos", mementos_url(article) %></td>
+  </tr>
+</table>
 <% end %>

@@ -14,6 +14,19 @@
  *= require_self
  */
 
+
+ .row .col.s2 {
+     width: 20.666667%;
+     margin-left: 65%;
+     left: auto;
+     right: auto;
+ }
+
+ #post-content-box > div.col.s3 > a > img {
+   width: 100%
+ }
+
+
 body {
     background-image: url('images/background.png');
     display: flex;
@@ -31,7 +44,9 @@ nav {
 }
 
 .whole-content {
-    margin-top: 80px;
+    width: 80%;
+    background: white !important;
+    margin: 90px auto 0 auto;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -55,4 +70,18 @@ nav {
 
 #posts-header-btn {
     width: 105px !important;
+}
+
+.article-content {
+  margin-top: 5%;
+}
+
+.image-logo {
+    height: 50px;
+    width: 50px;
+    margin: 5px 10px 0 0;
+}
+
+.blue-grey > div{
+    background-color: #4e782c !important;
 }

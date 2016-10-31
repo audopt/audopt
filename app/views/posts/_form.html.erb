@@ -1,27 +1,3 @@
-<div class="row">
-<form class="col s12">
-    <div class="row">
-        <div class="input-field col s2"></div>
-        <div class="input-field col s5">
-            <input id="icon_prefix" type="text" class="validate" />
-            <label for="icon_prefix">Search</label>
-        </div>
-        <div class="input-field col s3">
-            <label>Materialize Select</label>
-            <select>
-                <option value="" disabled="disabled" selected="selected">Choose your option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-            </select>
-        </div>
-        <div class="input-field col s2"></div>
-    </div>
-</form>
-
-
-
-asdasdasdasdasddasd
 <div id="post-new">
   <%= form_for(@post) do |f| %>
     <% if @post.errors.any? %>
@@ -45,7 +21,7 @@ asdasdasdasdasddasd
       <%= f.text_field :location %>
     </div>
 
-    <h5>Insira aqui as informaçaaasões do animal</h5>
+    <h5>Insira aqui as informações do animal</h5>
 
     <%= f.fields_for :animal do |ff| %>
       <div class="field">

@@ -57,3 +57,5 @@
 <% else %>
   <%= link_to 'Me interessei!', interest_post_path(@post, type: "interested"), method: :put, class: 'btn', id: 'interested-btn' %>
 <% end %>
+
+<%= link_to 'Adotar!', adopt_url(@post), method: :post, class: 'btn', id: 'interested-btn', style: 'margin-top: 1%;' %>

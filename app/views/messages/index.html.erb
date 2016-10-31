@@ -1,15 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div class="col s12" id="messages-card">
+  <div class="card yellow darken-3">
+    <div class="card-content white-text">
+      <span class="card-title">Lista de Mensagens Recebidas</span>
+    </div>
+  </div>
+</div>
 
-<h1>Lista de Mensagens Recebidas</h1>
-      <% @messages.each do |message| %>
-      <div id="message">  
-        <% user = User.find(message.sender_id)%>
-        <p><b>Sended <%= time_ago_in_words(message.created_at) %> ago by <%=user.name%> </b></p>
-        <p><%= message.text %></p>
-        <%= link_to 'Apagar', message, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
-    <% end %>
+<% @messages.each do |message| %>
+  <div id="message">  
+    <% user = User.find(message.sender_id)%>
+    <p><b>Sended <%= time_ago_in_words(message.created_at) %> ago by <%=user.name%> </b></p>
+    <p><%= message.text %></p>
+    <%= link_to 'Apagar', message, method: :delete, data: { confirm: 'Você tem certeza?' } %>
+  </div>
+<% end %>
 
 <br>
 
-<%= link_to 'New Message', new_message_path %>
+<%= link_to 'Nova mensagem', new_message_path, class: 'btn', id: 'new-message-btn' %>

@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name, "Nome" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
@@ -20,27 +20,27 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password %><br>
+    <%= f.label :password, "Senha" %><br>
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br>
+    <%= f.label :password_confirmation, "Confirme sua senha" %><br>
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
+    <%= f.label :address, "Endereço" %><br>
     <%= f.text_area :address %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <%= f.label :phone, "Telefone" %><br>
     <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :birth %><br>
-    <%= f.date_field :birth %>
+    <%= f.label :birth, "Data de nascimento" %><br>
+    <%= f.date_select :birth %>
   </div>
 	<div class="form-group">
-    <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
+    <%= f.label :avatar, "Escolha uma foto", class: 'col-sm-2 control-label'  %>
     <div class="col-sm-6">
     	<%= f.file_field :avatar %>
     </div>

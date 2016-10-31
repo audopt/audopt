@@ -9,29 +9,38 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
+  <nav>
+    <div class="nav-wrapper lime darken-3" id="header">
+      <% if  !logged_in? %>
+        <span class="logo">
+          <%= link_to image_tag('logo.png', class: 'image-logo'), root_path %>
+          <%= link_to "Audopt", root_path, class: "brand-logo" %>
+        </span>
+      <% else %>
+        <span class="logo">
+          <%= link_to image_tag('logo.png', class: 'image-logo'), posts_path %>
+          <%= link_to "Audopt", posts_path, class: "brand-logo" %>
+        </span>
+      <% end %>
+
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if logged_in? %>
+        <li><%= link_to "Notícias", articles_path %></li>
+        <li><%= link_to "Mensagens", messages_path %></li>
+        <li><%= link_to "Publicações", posts_path %></li>
+        <li><%= link_to "Bem vindo, %s" % current_user.name, user_path(current_user)%></li>
+        <li><%= link_to "Sair", logout_path %>
+          <% else %>
+          <li><%= link_to "Cadastre-se", new_user_path %></li>
+          <li><%= link_to "Entrar", login_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
 
 </head>
 
 <body style="background-image: url('/assets/background.png');">
-  <nav>
-    <div class="nav-wrapper lime darken-3" id="header">
-      <span class="logo">
-        <%= link_to "Audopt", root_path, class: "brand-logo" %>
-      </span>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if logged_in? %>
-          <li><%= link_to "Notícias", articles_path %></li>
-          <li><%= link_to "Mensagens", messages_path %></li>
-          <li><%= link_to "Publicações", posts_path %></li>
-          <li><%= link_to "Bem vindo, %s" % current_user.name, user_path(current_user)%></li>
-          <li><%= link_to "Sair", logout_path %>
-        <% else %>
-          <li><%= link_to "Cadastre-se", new_user_path %></li>
-          <li><%= link_to "Entrar", login_path %></li>
-        <% end %>
-      </ul>
-    </div>
-  </nav>
 
   <div class="whole-content">
     <%= yield %>
