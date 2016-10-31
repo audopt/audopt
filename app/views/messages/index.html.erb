@@ -1,20 +1,25 @@
 <div class="col s12" id="messages-card">
-  <div class="card yellow darken-3">
+  <div class="card blue-grey darken-3">
     <div class="card-content white-text">
-      <span class="card-title">Lista de Mensagens Recebidas</span>
+      <span class="card-title"><strong>Lista de Mensagens Recebidas</strong></span>
     </div>
   </div>
 </div>
 
 <% @messages.each do |message| %>
-  <div id="message">  
-    <% user = User.find(message.sender_id)%>
-    <p><b>Sended <%= time_ago_in_words(message.created_at) %> ago by <%=user.name%> </b></p>
-    <p><%= message.text %></p>
-    <%= link_to 'Apagar', message, method: :delete, data: { confirm: 'Você tem certeza?' } %>
-  </div>
-<% end %>
 
-<br>
+  <div id="message-sent-box">
+    <div class="card blue-grey darken-3">
+      <div class="card-content white-text">
+        <span class="card-title"><strong>Enviada por <%= message.sender.name%> em <%= message.created_at.strftime("%d %b. %Y") %> às <%= message.created_at.strftime("%H:%m") %></strong></span>
+      </div>
+      <div class="card-action">
+        <p id="text-message">Mensagem: <strong><%= message.text %></strong></p>
+        <%= link_to 'Apagar', message, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
 
 <%= link_to 'Nova mensagem', new_message_path, class: 'btn', id: 'new-message-btn' %>
