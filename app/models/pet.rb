@@ -13,7 +13,7 @@ class Pet < ActiveRecord::Base
   end
 
   def self.increase
-    pet = Pet.find(1)
+    pet = Pet.instance
     pet.qtd = pet.qtd + 1
     pet.save
   end

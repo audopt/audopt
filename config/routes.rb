@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/users/:id/report_user' => 'users#report_user', as: :report_user
   get '/users/:id/report_list' => 'users#report_list', as: :reports_list
   post '/reported' => 'users#reported'
+  post '/posts/:id/adopt', to: 'users#adopt', as: :adopt
 
   get '/new_post' => 'users#new_post', as: :new_user_post
   post '/create_post' => 'users#create_post', as: :create_user_post

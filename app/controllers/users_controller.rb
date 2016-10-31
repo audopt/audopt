@@ -94,6 +94,14 @@ class UsersController < ApplicationController
     @articles = User.find(params[:id]).articles
   end
 
+  def adopt
+    @post = Post.find(params[:id])
+    @animal = @post.animal
+    @animal.update_attribute(:adopted, true)
+    Pet.increase
+    redirect_to @post
+  end
+
   private
     def set_user
       @user = User.find(params[:id])
