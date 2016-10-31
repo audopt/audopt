@@ -16,10 +16,10 @@
     <%= f.text_field :text %>
   </div>
  <div class="field">                
-                                          
      <%= f.label :receiver_id, "Receptor (informe o nome completo)" %><br>
-     <%= f.text_field :receiver_name %>
+     <%= f.select :receiver_name, User.all.collect { |u| u.name } %>
  </div>
+ 
   <div class="actions">
     <%= f.submit "Enviar mensagem", class: 'btn', style: 'margin: 30px 0 0 40% !important' %>
   </div>

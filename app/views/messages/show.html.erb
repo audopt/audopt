@@ -1,9 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div id="message-sent-box">
+  <div class="card blue-grey darken-3">
+    <div class="card-content white-text">
+      <span class="card-title"><strong>Mensagem enviada para <%= @message.receiver.name %></strong></span>
+    </div>
+    <div class="card-action">
+      <p id="text-message"><%= @message.text %></p>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Text:</strong>
-  <%= @message.text %>
-</p>
-
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+<%= link_to 'Back', messages_path, class: 'btn', id: 'new-message-btn' %>
