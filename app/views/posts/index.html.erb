@@ -11,7 +11,9 @@
   <div class="col s3 card" id="order-posts">
     <h6>Ordenar</h6>
     <%= link_to "Data (mais recente primeiro)", posts_path(order: "date_desc") %><br>
-    <%= link_to "Data (mais antiga primeiro)", posts_path(order: "date_asc") %>
+    <%= link_to "Data (mais antiga primeiro)", posts_path(order: "date_asc") %><br>
+    <%= link_to "Atualizado (mais recente primeiro)", posts_path(order: "update_desc") %><br>
+    <%= link_to "Atualizado (mais antigo primeiro)", posts_path(order: "update_asc") %>
   </div>
   <% end %>
 </div>

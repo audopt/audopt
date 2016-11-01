@@ -84,7 +84,13 @@ class PostsController < ApplicationController
         posts.sort_posts
       when "date_asc"
         posts = SortByDateAsc.new
-        posts.sort_posts        
+        posts.sort_posts       
+      when "update_desc"
+        posts = SortByUpdateDesc.new
+        posts.sort_posts
+      when "update_asc"
+        posts = SortByUpdateAsc.new
+        posts.sort_posts    
       else
         Post.all
       end
