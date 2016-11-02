@@ -28,6 +28,22 @@
         <li><%= link_to "Notícias", articles_path %></li>
         <li><%= link_to "Mensagens", messages_path %></li>
         <li><%= link_to "Publicações", posts_path %></li>
+
+        <li>
+          <!-- Dropdown Trigger -->
+          <%= link_to "Notificações", "#", class: 'dropdown-button', data: { activates: 'dropdown1' } %>
+
+          <!-- Dropdown Structure -->
+          <ul id='dropdown1' class='dropdown-content'>
+            <% user_notifications.each do |notification| %>
+              <li><%= notification_type(notification) %></li>
+            <% end %>
+
+            <li class="divider"></li>
+            <li><%= link_to "Ver mais", notifications_path %></li>
+          </ul>
+        </li>
+
         <li><%= link_to "Bem vindo, %s" % current_user.name, user_path(current_user)%></li>
         <li><%= link_to "Sair", logout_path %>
           <% else %>

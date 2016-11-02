@@ -98,6 +98,9 @@ class UsersController < ApplicationController
     @post = Post.find(params[:id])
     @animal = @post.animal
     @animal.update_attribute(:adopted, true)
+
+    Notification.create(content: adopted_message(@post), sender: current_user, receiver: @post.user, kind: "adoption")
+
     Pet.increase
     redirect_to @post
   end

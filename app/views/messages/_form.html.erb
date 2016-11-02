@@ -15,10 +15,17 @@
     <%= f.label :text, "Texto" %><br>
     <%= f.text_field :text %>
   </div>
- <div class="field">                
-     <%= f.label :receiver_id, "Receptor (informe o nome completo)" %><br>
-     <%= f.select :receiver_name, User.all.collect { |u| u.name } %>
- </div>
+
+  <%= f.label :receiver_id, "Enviar para" %><br>
+  <% if params[:message_to] && !User.where(name: params[:message_to]).empty? %>
+    <div class="field">
+      <%= f.select :receiver_name, User.all.collect { |u| u.name }, { selected: User.where(name: params[:message_to]).first.name } %>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= f.select :receiver_name, User.all.collect { |u| u.name } %>
+    </div>
+  <% end %>
  
   <div class="actions">
     <%= f.submit "Enviar mensagem", class: 'btn', style: 'margin: 30px 0 0 40% !important' %>
