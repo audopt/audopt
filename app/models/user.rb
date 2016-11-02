@@ -3,9 +3,10 @@ class User < ActiveRecord::Base
 	has_many :reports, dependent: :destroy
 	has_many :interest_posts
 	has_many :interests, through: :interest_posts, source: :post
-    has_many :posts, dependent: :destroy
-    has_many :send_messages, :foreign_key => :sender_id, class_name: 'Message'
-    has_many :receive_messages, :foreign_key => :receiver_id, class_name: 'Message'
+  has_many :posts, dependent: :destroy
+  has_many :send_messages, :foreign_key => :sender_id, class_name: 'Message'
+  has_many :receive_messages, :foreign_key => :receiver_id, class_name: 'Message'
+  has_many :notifications
 
 	EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
