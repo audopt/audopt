@@ -90,7 +90,13 @@ class PostsController < ApplicationController
         posts.sort_posts
       when "update_asc"
         posts = SortByUpdateAsc.new
-        posts.sort_posts    
+        posts.sort_posts 
+      when "location_desc"
+        posts = SortByLocationDesc.new
+        posts.sort_posts   
+      when "location_asc"
+        posts = SortByLocationAsc.new
+        posts.sort_posts 
       else
         Post.all
       end

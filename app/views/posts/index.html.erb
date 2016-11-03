@@ -13,7 +13,9 @@
     <%= link_to "Data (mais recente primeiro)", posts_path(order: "date_desc") %><br>
     <%= link_to "Data (mais antiga primeiro)", posts_path(order: "date_asc") %><br>
     <%= link_to "Atualizado (mais recente primeiro)", posts_path(order: "update_desc") %><br>
-    <%= link_to "Atualizado (mais antigo primeiro)", posts_path(order: "update_asc") %>
+    <%= link_to "Atualizado (mais antigo primeiro)", posts_path(order: "update_asc") %><br>
+    <%= link_to "Localização (A - Z)", posts_path(order: "location_asc")%><br>
+    <%= link_to "Localização (Z - A)", posts_path(order: "location_desc")%>
   </div>
   <% end %>
 </div>
