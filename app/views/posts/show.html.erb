@@ -58,8 +58,6 @@
   <%= link_to 'Me interessei!', interest_post_path(@post, type: "interested"), method: :put, class: 'btn', id: 'interested-btn' %>
 <% end %>
 
-<%= link_to 'Comentar!', comment_post_path(@post),  method: :get, class: 'btn', id: 'interested-btn'%>
-
 <% if @post.user != current_user && !@post.animal.adopted? %>
   <%= link_to "Adotar este animal", "#modal1", class: 'modal-trigger waves-effect waves-light btn' %>
 
@@ -77,4 +75,26 @@
   </div>
 <% end %>
 
-<%= link_to 'Mostrar Comentários!', comment_list_path(@post),  method: :get, class: 'btn', id: 'uninterested-btn'%>
+<div id="post-comments">
+  <h3 style="margin-left: 5px;">Comentários</h3>
+  <table class="comments">
+    <% if !@comments.empty?%>
+      <% @comments.each do |comment| %>
+        <% user = User.find(comment.user_id) %>
+          <tr class="comment">
+              <td id="comment-sender"><%= link_to(image_tag(user.avatar.url(:thumb), class:'comment-image'), user_path(user)) %></td>
+            <td>
+              <table>
+                <tr><td><%= "#{User.find(comment.user_id).name} disse:" %></td></tr>
+                <tr><td><%= comment.text %></td></tr>
+              </table>
+            </td>
+          </tr>
+      <% end %>
+    <% else %>
+      <p style="margin-left: 5px;">Esta publicação não possui comentários</p>
+    <% end %>  
+  </table>
+</div>
+
+<%= link_to 'Comentar!', comment_post_path(@post),  method: :get, class: 'btn', id: 'comment-btn'%>

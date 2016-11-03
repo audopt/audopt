@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     puts @post.inspect
     @user = User.find(@post.user_id)
+    @comments = @post.comments
   end
 
   def new
@@ -82,11 +83,6 @@ class PostsController < ApplicationController
     if @comment.save
       redirect_to @post
     end
-  end
-
-  def comment_list
-    @post = Post.find(params[:id])
-    @comments = @post.comments
   end
 
   private

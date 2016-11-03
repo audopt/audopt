@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   post '/reported' => 'users#reported'
   post '/posts/:id/adopt', to: 'users#adopt', as: :adopt
   get '/posts/:id/comment_post', to: 'posts#comment_post', as: :comment_post
-  get '/posts/:id/comment_list' => 'posts#comment_list', as: :comment_list
   post '/create_comment', to:'posts#create_comment', as: :create_comment
 
   get '/new_post' => 'users#new_post', as: :new_user_post

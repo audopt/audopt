@@ -84,3 +84,19 @@
     font-weight: bold;
   }
 }
+
+#comment-sender {
+  width: 5%;
+}
+
+#comment-sender > a > img {
+  margin-left: 5px;
+  border-radius: 100%;
+  height: 75px;
+}
+
+#comment-btn {
+  width: 200px;
+  margin-top: 20px;
+  margin-left: 5px;
+}

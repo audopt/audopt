@@ -14,6 +14,8 @@ user3 = User.create(name: 'João Busche', email: 'busche@gmail.com', password: '
 puts user3.errors.full_messages
 user4 = User.create(name: 'Vitor Barbosa', email: 'vitor@gmail.com', password: 'omelete1', password_confirmation: 'omelete1', address: 'SMT conj 32', phone: '33321539', birth: Time.now)
 puts user4.errors.full_messages
+user5 = User.create(name: 'Admin', email: 'admin@gmail.com', password: 'omelete1', password_confirmation: 'omelete1', address: 'SMT conj 32', phone: '33321539', birth: Time.now, role_admin: true)
+puts user5.errors.full_messages
 
 animal1 = Animal.create(name: "Marley", kind: "Cachorro", breed: "Poodle", vaccined: true, castrated: false, sex: 'M', size: "Médio")
 puts animal1.errors.full_messages
