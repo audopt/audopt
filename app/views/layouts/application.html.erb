@@ -35,7 +35,7 @@
 
           <!-- Dropdown Structure -->
           <ul id='dropdown1' class='dropdown-content'>
-            <% user_notifications.each do |notification| %>
+            <% current_user.notifications.each do |notification| %>
               <li><%= notification_type(notification) %></li>
             <% end %>
 

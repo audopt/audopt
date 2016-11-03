@@ -1,9 +1,5 @@
 module NotificationsHelper
 
-  def user_notifications
-    Notification.where(receiver: current_user)
-  end
-
   def notification_type notification
     case notification.kind
     when "adoption"

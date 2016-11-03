@@ -19,11 +19,11 @@
   <%= f.label :receiver_id, "Enviar para" %><br>
   <% if params[:message_to] && !User.where(name: params[:message_to]).empty? %>
     <div class="field">
-      <%= f.select :receiver_name, User.all.collect { |u| u.name }, { selected: User.where(name: params[:message_to]).first.name } %>
+      <%= f.select :receiver_name, @all_users.collect { |u| u.name }, { selected: User.where(name: params[:message_to]).first.name } %>
     </div>
   <% else %>
     <div class="field">
-      <%= f.select :receiver_name, User.all.collect { |u| u.name } %>
+      <%= f.select :receiver_name, @all_users.collect { |u| u.name } %>
     </div>
   <% end %>
  

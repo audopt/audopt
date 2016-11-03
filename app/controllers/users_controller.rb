@@ -96,13 +96,18 @@ class UsersController < ApplicationController
 
   def adopt
     @post = Post.find(params[:id])
-    @animal = @post.animal
-    @animal.update_attribute(:adopted, true)
 
-    Notification.create(content: adopted_message(@post), sender: current_user, receiver: @post.user, kind: "adoption")
+    if !is_author?(@post)
+      @post.animal.update_attribute(:adopted, true)
+      current_user.adopted_animals << @post.animal
 
-    Pet.increase
-    redirect_to @post
+      Notification.create(content: adopted_message(@post), sender: current_user, receiver: @post.user, kind: "adoption")
+      Pet.increase
+
+      redirect_to @post
+    else
+      redirect_to @post
+    end
   end
 
   private
@@ -116,5 +121,9 @@ class UsersController < ApplicationController
 
     def user_post_params
       params.require(:post).permit(:text, :location, animal_attributes: [:name, :kind, :breed, :vaccined, :castrated, :sex, :adopted, :size, :avatar])
+    end
+
+    def is_author? post
+      post.user == current_user
     end
 end

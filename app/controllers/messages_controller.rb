@@ -1,32 +1,24 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
-  # GET /messages
-  # GET /messages.json
   def index
     @user = current_user
     @messages = Message.where(receiver_id: @user.id).order(created_at: :desc)
   end
 
-  # GET /messages/1
-  # GET /messages/1.json
   def show
   end
 
-  # GET /messages/new
   def new
     @user = current_user
     @message = Message.new
     @message.update(sender_id: @user.id)
-    @all_users = User.all
+    @all_users = User.where.not(name: current_user.name).order(name: :asc)
   end
 
-  # GET /messages/1/edit
   def edit
   end
 
-  # POST /messages
-  # POST /messages.json
   def create
     @message = Message.new(message_params)
 
@@ -69,6 +61,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params  
-      params.require(:message).permit(:text,:receiver_id,:sender_id,:receiver_name)
+      params.require(:message).permit(:text, :receiver_id, :sender_id, :receiver_name)
     end
 end   
