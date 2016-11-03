@@ -59,5 +59,18 @@
 <% end %>
 
 <% if @post.user != current_user && !@post.animal.adopted? %>
-  <%= link_to 'Adotar!', adopt_url(@post), method: :post, class: 'btn', id: 'interested-btn', style: 'margin-top: 1%;' %>
+  <%= link_to "Adotar este animal", "#modal1", class: 'modal-trigger waves-effect waves-light btn' %>
+
+  <div id="modal1" class="modal bottom-sheet">
+    <%= form_tag "/posts/#{@post.id}/adopt" do %>
+      <div class="modal-content">
+        <h5>Envie uma mensagem para <%= @post.user.name %> para combinar os detalhes da adoção</h5>
+        <span id='adoption-message-field'><%= text_field_tag 'text' %></span>
+      </div>
+      <div class="modal-footer">
+        <%= button_tag 'Enviar mensagem', class: 'btn', id: 'adoption-with-message' %>
+        <%= link_to 'Não, obrigado', adopt_url(@post), method: :post, class: 'btn-flat', id: 'adoption-with-no-message' %>
+      </div>
+    <% end %>
+  </div>
 <% end %>

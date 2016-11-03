@@ -16,4 +16,11 @@
 
 $(document).ready(function(){
     $('select').material_select();
+    $('.modal-trigger').leanModal();
+
+    $('#adoption-message-field').keyup(function(event){
+        if(event.keyCode == 13){
+            $("#adoption-with-message").click();
+        }
+    });
 });

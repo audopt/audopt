@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :report_list, :interest_list]
 
@@ -98,17 +99,21 @@ class UsersController < ApplicationController
   def adopt
     @post = Post.find(params[:id])
 
-    if !is_author?(@post)
+    if !is_author?(@post) && !@post.animal.adopted?
       @post.animal.update_attribute(:adopted, true)
       current_user.adopted_animals << @post.animal
 
-      Notification.create(content: adopted_message(@post), sender: current_user, receiver: @post.user, kind: "adoption")
-      Pet.increase
+      if params[:text]
+        message = Message.create(text: params[:text], sender: current_user, receiver: @post.user)
+        Notification.create(content: adopted_with_message_content(@post), sender: current_user, receiver: @post.user, kind: "adoption")
+      else
+        Notification.create(content: adopted_content(@post), sender: current_user, receiver: @post.user, kind: "adoption")
+      end
 
-      redirect_to @post
-    else
-      redirect_to @post
+      Pet.increase
     end
+
+    redirect_to @post
   end
 
   private

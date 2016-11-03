@@ -2,17 +2,15 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   def index
-    @user = current_user
-    @messages = Message.where(receiver_id: @user.id).order(created_at: :desc)
+    @messages = Message.where(receiver: current_user).order(created_at: :desc)
   end
 
   def show
   end
 
   def new
-    @user = current_user
     @message = Message.new
-    @message.update(sender_id: @user.id)
+    @message.update(sender: current_user)
     @all_users = User.where.not(name: current_user.name).order(name: :asc)
   end
 

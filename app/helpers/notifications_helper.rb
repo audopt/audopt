@@ -14,12 +14,16 @@ module NotificationsHelper
     end
   end
 
-  def adopted_message post
-    "#{current_user.name} deseja adotar #{post.animal.name}! Envie uma mensagem para #{current_user.name}."
+  def adopted_content post
+    "#{current_user.name} deseja adotar #{post.animal.name}! Envie uma mensagem para #{current_user.name}"
+  end
+
+  def adopted_with_message_content post
+    "#{current_user.name} deseja adotar #{post.animal.name} e enviou uma mensagem! Veja a mensagem que #{current_user.name} enviou"
   end
 
   def reported_message post
-    "Você foi denunciado por #{current_user.name}! Converse com #{current_user.name}, para entender o porque."
+    "Você foi denunciado por #{current_user.name}! Converse com #{current_user.name}, para entender o porquê"
   end
 
 end
