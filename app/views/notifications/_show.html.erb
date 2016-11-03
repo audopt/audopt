@@ -1,5 +1,13 @@
-<% @notifications.each do |notification| %>
+<% if !@notifications.empty? %>
+
+	<% @notifications.each do |notification| %>
     
-    <p><%= notification.content %>: <%= notification.kind %></p>
+    	<p><%= notification.content %>: <%= notification.kind %></p>
+
+	<% end %>
+
+<% else %>
+
+	<p>Você não possui notificações</p>
 
 <% end %>
