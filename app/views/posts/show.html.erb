@@ -58,6 +58,8 @@
   <%= link_to 'Me interessei!', interest_post_path(@post, type: "interested"), method: :put, class: 'btn', id: 'interested-btn' %>
 <% end %>
 
+<%= link_to 'Comentar!', comment_post_path(@post),  method: :get, class: 'btn', id: 'interested-btn'%>
+
 <% if @post.user != current_user && !@post.animal.adopted? %>
   <%= link_to "Adotar este animal", "#modal1", class: 'modal-trigger waves-effect waves-light btn' %>
 
@@ -74,3 +76,5 @@
     <% end %>
   </div>
 <% end %>
+
+<%= link_to 'Mostrar Comentários!', comment_list_path(@post),  method: :get, class: 'btn', id: 'uninterested-btn'%>

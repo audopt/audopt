@@ -68,6 +68,27 @@ class PostsController < ApplicationController
     end
   end
 
+  def comment_post
+    @comment = Comment.new
+  end
+
+  def create_comment
+    @post = Post.find(params[:post_id])
+    @comment = Comment.new
+    @comment.text = params[:text]
+    @comment.user_id = current_user.id
+    @comment.post_id = @post.id
+
+    if @comment.save
+      redirect_to @post
+    end
+  end
+
+  def comment_list
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+  end
+
   private
     def set_post
       @post = Post.find(params[:id])

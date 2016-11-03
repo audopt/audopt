@@ -1,0 +1,13 @@
+<div id="comment_post">
+  <%= form_tag create_comment_path, method: :post do |t| %>
+
+    <%= hidden_field_tag :post_id , params[:id] %>
+
+    <%= label_tag :text %><br>
+    <%= text_field_tag :text %>
+
+    <p><%= submit_tag ("Comentar"), id: 'submit-button', class: 'btn btn-primary' %>
+    </div>
+
+  <% end %>
+</div>
