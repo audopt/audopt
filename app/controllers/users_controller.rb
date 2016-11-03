@@ -61,6 +61,7 @@ class UsersController < ApplicationController
     @report.sender = current_user.id
 
     if @report.save
+      Notification.create(content: reported_message(@post), sender: current_user, receiver_id: @report.user_id, kind: "report")
       redirect_to user_path(User.find(@report.user_id))
     else
       redirect_to report_user_path
