@@ -11,6 +11,8 @@ module NotificationsHelper
       link_to notification.content, new_message_path(message_to: notification.sender.name)
     when "report"
       link_to notification.content, new_message_path(message_to: notification.sender.name)
+    when "comment"
+      link_to notification.content, new_message_path(message_to: notification.sender.name)
     end
   end
 
@@ -24,6 +26,10 @@ module NotificationsHelper
 
   def reported_message post
     "Você foi denunciado por #{current_user.name}! Converse com #{current_user.name}, para entender o porquê"
+  end
+
+  def comment_message post
+    "#{current_user.name} comentou no post do #{post.animal.name}! Vá na sua publicação para ver o que foi comentado"
   end
 
 end

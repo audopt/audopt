@@ -81,7 +81,12 @@ class PostsController < ApplicationController
     @comment.post_id = @post.id
 
     if @comment.save
-      redirect_to @post
+      if(current_user != @post.user)
+        Notification.create(content: comment_message(@post), sender: current_user, receiver: @post.user, kind: "comment")
+        redirect_to @post
+      else
+        redirect_to @post
+      end
     end
   end
 
