@@ -5,6 +5,18 @@ class PostsController < ApplicationController
     @posts = reorder
   end
 
+  def search_by_kind
+    if params[:kind] == "Filter by kind"
+      redirect_to posts_path
+    end
+    @animals = Animal.where(kind: params[:kind])
+    @posts = []
+    @animals.each do |animal|
+      @posts << animal.post
+    end
+    @posts
+  end
+
   def show
     @interested = InterestPost.find_by(user: current_user, post: @post).present?
     @post = Post.find(params[:id])
@@ -84,19 +96,19 @@ class PostsController < ApplicationController
         posts.sort_posts
       when "date_asc"
         posts = SortByDateAsc.new
-        posts.sort_posts       
+        posts.sort_posts
       when "update_desc"
         posts = SortByUpdateDesc.new
         posts.sort_posts
       when "update_asc"
         posts = SortByUpdateAsc.new
-        posts.sort_posts 
+        posts.sort_posts
       when "location_desc"
         posts = SortByLocationDesc.new
-        posts.sort_posts   
+        posts.sort_posts
       when "location_asc"
         posts = SortByLocationAsc.new
-        posts.sort_posts 
+        posts.sort_posts
       else
         Post.all
       end
