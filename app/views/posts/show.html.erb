@@ -59,7 +59,7 @@
 <% end %>
 
 <% if @post.user != current_user && !@post.animal.adopted? %>
-  <%= link_to "Adotar este animal", "#modal1", class: 'modal-trigger waves-effect waves-light btn' %>
+  <%= link_to "Adotar este animal", "#modal1", class: 'btn modal-trigger waves-effect waves-light btn', id: 'interested-btn' %>
 
   <div id="modal1" class="modal bottom-sheet">
     <%= form_tag "/posts/#{@post.id}/adopt" do %>

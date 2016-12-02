@@ -60,10 +60,10 @@ class PostsController < ApplicationController
     type = params[:type]
     if type == "interested"
       current_user.interests << @post
-      redirect_to :back, notice: 'Marcado como interresado'
+      redirect_to :back, notice: 'Marcado como interessado'
     elsif type == "uninterested"
       current_user.interests.delete(@post)
-      redirect_to :back, notice: 'Desmarcado como interresado'
+      redirect_to :back, notice: 'Desmarcado como interessado'
     else
       redirect_to :back, notice: 'Nada aconteceu'
     end
