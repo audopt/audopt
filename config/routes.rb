@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'statics#home'
 
   resources :messages
+
+  post '/messages/new' => 'messages#new'
+
   resources :animals
   resources :comments
   resources :posts do
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
   resources :reports
   resources :users
   resources :articles
+
   get '/articles/:id/mementos', to: 'articles#mementos', as: :mementos
   post 'recover/:memento_id', to: 'articles#recover', as: :recover
   get 'users/:id/my_articles', to: 'users#my_articles', as: :my_articles
@@ -20,6 +24,8 @@ Rails.application.routes.draw do
   get '/users/:id/report_list' => 'users#report_list', as: :reports_list
   post '/reported' => 'users#reported'
   post '/posts/:id/adopt', to: 'users#adopt', as: :adopt
+  get '/posts/:id/comment_post', to: 'posts#comment_post', as: :comment_post
+  post '/create_comment', to:'posts#create_comment', as: :create_comment
 
   get '/new_post' => 'users#new_post', as: :new_user_post
   post '/create_post' => 'users#create_post', as: :create_user_post
@@ -27,5 +33,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
+  get '/notifications' => 'notifications#index'
 
 end

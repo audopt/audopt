@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :report_list, :interest_list]
 
@@ -61,6 +62,7 @@ class UsersController < ApplicationController
     @report.sender = current_user.id
 
     if @report.save
+      Notification.create(content: reported_message(@post), sender: current_user, receiver_id: @report.user_id, kind: "report")
       redirect_to user_path(User.find(@report.user_id))
     else
       redirect_to report_user_path
@@ -96,9 +98,21 @@ class UsersController < ApplicationController
 
   def adopt
     @post = Post.find(params[:id])
-    @animal = @post.animal
-    @animal.update_attribute(:adopted, true)
-    Pet.increase
+
+    if !is_author?(@post) && !@post.animal.adopted?
+      @post.animal.update_attribute(:adopted, true)
+      current_user.adopted_animals << @post.animal
+
+      if params[:text]
+        message = Message.create(text: params[:text], sender: current_user, receiver: @post.user)
+        Notification.create(content: adopted_with_message_content(@post), sender: current_user, receiver: @post.user, kind: "adoption-with-message")
+      else
+        Notification.create(content: adopted_content(@post), sender: current_user, receiver: @post.user, kind: "adoption-with-no-message")
+      end
+
+      Pet.increase
+    end
+
     redirect_to @post
   end
 
@@ -113,5 +127,9 @@ class UsersController < ApplicationController
 
     def user_post_params
       params.require(:post).permit(:text, :location, animal_attributes: [:name, :kind, :breed, :vaccined, :castrated, :sex, :adopted, :size, :avatar])
+    end
+
+    def is_author? post
+      post.user == current_user
     end
 end

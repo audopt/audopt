@@ -1,6 +1,7 @@
 class Animal < ActiveRecord::Base
 
   belongs_to :post
+  belongs_to :adopter, class_name: 'User', foreign_key: 'adopter_id'
 
   validates :name, presence: true, length: {maximum: 200}
   validates :kind, presence: true, length: {maximum: 80}

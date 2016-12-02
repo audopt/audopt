@@ -58,4 +58,43 @@
   <%= link_to 'Me interessei!', interest_post_path(@post, type: "interested"), method: :put, class: 'btn', id: 'interested-btn' %>
 <% end %>
 
-<%= link_to 'Adotar!', adopt_url(@post), method: :post, class: 'btn', id: 'interested-btn', style: 'margin-top: 1%;' %>
+<% if @post.user != current_user && !@post.animal.adopted? %>
+  <%= link_to "Adotar este animal", "#modal1", class: 'btn modal-trigger waves-effect waves-light btn', id: 'interested-btn' %>
+
+  <div id="modal1" class="modal bottom-sheet">
+    <%= form_tag "/posts/#{@post.id}/adopt" do %>
+      <div class="modal-content">
+        <h5>Envie uma mensagem para <%= @post.user.name %> para combinar os detalhes da adoção</h5>
+        <span id='adoption-message-field'><%= text_field_tag 'text' %></span>
+      </div>
+      <div class="modal-footer">
+        <%= button_tag 'Enviar mensagem', class: 'btn', id: 'adoption-with-message' %>
+        <%= link_to 'Não, obrigado', adopt_url(@post), method: :post, class: 'btn-flat', id: 'adoption-with-no-message' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<div id="post-comments">
+  <h3 style="margin-left: 5px;">Comentários</h3>
+  <table class="comments">
+    <% if !@comments.empty?%>
+      <% @comments.each do |comment| %>
+        <% user = User.find(comment.user_id) %>
+          <tr class="comment">
+              <td id="comment-sender"><%= link_to(image_tag(user.avatar.url(:thumb), class:'comment-image'), user_path(user)) %></td>
+            <td>
+              <table>
+                <tr><td><%= "#{User.find(comment.user_id).name} disse:" %></td></tr>
+                <tr><td><%= comment.text %></td></tr>
+              </table>
+            </td>
+          </tr>
+      <% end %>
+    <% else %>
+      <p style="margin-left: 5px;">Esta publicação não possui comentários</p>
+    <% end %>  
+  </table>
+</div>
+
+<%= link_to 'Comentar!', comment_post_path(@post),  method: :get, class: 'btn', id: 'comment-btn'%>

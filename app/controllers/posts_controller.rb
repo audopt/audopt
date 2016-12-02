@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     puts @post.inspect
     @user = User.find(@post.user_id)
+    @comments = @post.comments
   end
 
   def new
@@ -59,12 +60,33 @@ class PostsController < ApplicationController
     type = params[:type]
     if type == "interested"
       current_user.interests << @post
-      redirect_to :back, notice: 'Marcado como interresado'
+      redirect_to :back, notice: 'Marcado como interessado'
     elsif type == "uninterested"
       current_user.interests.delete(@post)
-      redirect_to :back, notice: 'Desmarcado como interresado'
+      redirect_to :back, notice: 'Desmarcado como interessado'
     else
       redirect_to :back, notice: 'Nada aconteceu'
+    end
+  end
+
+  def comment_post
+    @comment = Comment.new
+  end
+
+  def create_comment
+    @post = Post.find(params[:post_id])
+    @comment = Comment.new
+    @comment.text = params[:text]
+    @comment.user_id = current_user.id
+    @comment.post_id = @post.id
+
+    if @comment.save
+      if(current_user != @post.user)
+        Notification.create(content: comment_message(@post), sender: current_user, receiver: @post.user, kind: "comment")
+        redirect_to @post
+      else
+        redirect_to @post
+      end
     end
   end
 

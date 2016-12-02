@@ -1,0 +1,27 @@
+<div class="col s12" id="messages-card">
+  <div class="card yellow darken-3">
+    <div class="card-content white-text">
+      <span class="card-title">Minhas notificações</span>
+    </div>
+  </div>
+</div>
+
+<% if !@notifications.empty? %>
+	<% @notifications.each do |notification| %>
+    <div id="message-sent-box">
+      <div class="card blue-grey darken-3">
+        <div class="card-content white-text">
+          <p class="notification-content"><%= notification_type(notification) %></p>
+        </div>
+      </div>
+    </div>
+	<% end %>
+<% else %>
+  <div id="message-sent-box">
+    <div class="card blue-grey darken-3">
+      <div class="card-action white-text">
+        <p>Você não possui notificações</p>
+      </div>
+    </div>
+  </div>
+<% end %>
