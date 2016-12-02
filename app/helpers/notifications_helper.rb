@@ -7,9 +7,9 @@ module NotificationsHelper
     when "adoption-with-message"
       link_to notification.content, messages_path
     when "report"
-      link_to notification.content, new_message_path(message_to: notification.sender.name)
+      link_to notification.content, reports_list_path(current_user)
     when "comment"
-      link_to notification.content, new_message_path(message_to: notification.sender.name)
+      link_to notification.content, root_path
     end
   end
 
