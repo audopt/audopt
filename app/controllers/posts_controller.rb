@@ -1,7 +1,17 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :interest]
 
-  def index
+	def search_by_kind	
+		@posts = []
+		Post.all.each do |post|
+			if post.animal.kind == params[:kind]
+				@posts << post
+			end
+		end
+		@posts
+	end
+
+	def index
     @posts = reorder
   end
 
