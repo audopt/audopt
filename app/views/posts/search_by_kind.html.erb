@@ -1,0 +1,65 @@
+<div class="row post-plus-content">
+  <div class="col s1 offset-s1">
+    <%= link_to new_user_post_url, class: "btn-floating btn-large waves-effect waves-light red", style: 'margin: 0 0 1% 1%;' do %>
+      <i class="material-icons">add</i>
+    <% end %>
+  </div>
+
+  <div class="col s6"></div>
+
+  <% unless @posts.empty? %>
+  <div class="col s3 card" id="order-posts">
+    <h6>Ordenar</h6>
+    <%= link_to "Data (mais recente primeiro)", posts_path(order: "date_desc") %><br>
+    <%= link_to "Data (mais antiga primeiro)", posts_path(order: "date_asc") %><br>
+    <%= link_to "Atualizado (mais recente primeiro)", posts_path(order: "update_desc") %><br>
+    <%= link_to "Atualizado (mais antigo primeiro)", posts_path(order: "update_asc") %><br>
+    <%= link_to "Localização (A - Z)", posts_path(order: "location_asc")%><br>
+    <%= link_to "Localização (Z - A)", posts_path(order: "location_desc")%>
+  </div>
+  <% end %>
+</div>
+
+<table>
+  <tbody>
+    <% @posts.each do |post| %>
+
+        <div class="col s12" id="messages-card">
+          <div class="card blue-grey darken-3">
+            <div class="card-content white-text row">
+              <div class="col s3">
+                <%= link_to(image_tag(post.animal.avatar.url(:thumb), class:'post-profile-image'), post_path(post)) %>
+              </div>
+              <div class="col s9" id="post-info">
+                <h3><%= post.text %></h3>
+                <p>Em <%= post.location %></p>
+                <% if post.animal.vaccined? %>
+                  <span">
+                    <i class="small material-icons" style="color: white;">done</i> Vacinado
+                  </span><br>
+                <% end %>
+
+                <% if post.animal.castrated? %>
+                  <span">
+                    <i class="small material-icons" style="color: white;">done</i> Castrado
+                  </span><br>
+                <% end %>
+
+                <% if post.animal.adopted? %>
+                  <span">
+                    <i class="small material-icons" style="color: white;">done</i> Adotado
+                  </span><br>
+                <% end %>
+
+                <p><strong>Tamanho:</strong> <%= post.animal.size %>
+
+                <p>Criado por <%= post.user.name %> em <%= post.created_at.strftime("%d %b. %Y") %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </tbody>
+</table>
