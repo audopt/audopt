@@ -20,13 +20,6 @@
   <% end %>
 </div>
 
-<% names = Post.get_kinds %>
-<%= form_tag "/search_by_kind", id: "filter-form", method: :get do %>
-	<%= select_tag(:kind, options_for_select(names.collect { |u| u  }), {:prompt => 'Filter by kind'}) %>
-	<%= submit_tag 'Go!' %>
-<% end %>
-
-
 <table>
   <tbody>
     <% @posts.each do |post| %>

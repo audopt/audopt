@@ -10,4 +10,15 @@ class Post < ActiveRecord::Base
 
   validates :location, presence: true, length: { maximum: 240 }
 
+	def self.get_kinds
+    @kinds = []
+    Post.all.each do |post|
+  	  if !@kinds.include?(post.animal.kind)
+  	  	@kinds << post.animal.kind
+   	 end
+    end
+    @kinds
+ 	end
+	
+
 end
