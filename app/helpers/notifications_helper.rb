@@ -2,13 +2,10 @@ module NotificationsHelper
 
   def notification_type notification
     case notification.kind
-    when "adoption"
-      puts "*"*80
-      puts notification.inspect
-      puts "*"*80
-      # FIXME find a way to go to messages page with user who wants to adopt in parameter
-      # FIXME put an if on messages/new, if parameter is empty show select, else show person to send
+    when "adoption-with-no-message"
       link_to notification.content, new_message_path(message_to: notification.sender.name)
+    when "adoption-with-message"
+      link_to notification.content, messages_path
     when "report"
       link_to notification.content, new_message_path(message_to: notification.sender.name)
     when "comment"
@@ -25,7 +22,7 @@ module NotificationsHelper
   end
 
   def reported_message post
-    "Você foi denunciado por #{current_user.name}! Converse com #{current_user.name}, para entender o porquê"
+    "Você foi denunciado por #{current_user.name}! Veja aqui a denúncia"
   end
 
   def comment_message post

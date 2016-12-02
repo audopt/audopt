@@ -105,9 +105,9 @@ class UsersController < ApplicationController
 
       if params[:text]
         message = Message.create(text: params[:text], sender: current_user, receiver: @post.user)
-        Notification.create(content: adopted_with_message_content(@post), sender: current_user, receiver: @post.user, kind: "adoption")
+        Notification.create(content: adopted_with_message_content(@post), sender: current_user, receiver: @post.user, kind: "adoption-with-message")
       else
-        Notification.create(content: adopted_content(@post), sender: current_user, receiver: @post.user, kind: "adoption")
+        Notification.create(content: adopted_content(@post), sender: current_user, receiver: @post.user, kind: "adoption-with-no-message")
       end
 
       Pet.increase
